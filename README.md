@@ -14,6 +14,8 @@ Now you can start working on your mod. It can be found in stephensons-rocket/ste
 
 Using your own post_install.sh script is also possible, just put your version in your mod directory.
 
+Make sure all the repos you used to download packages can be found in the sources.list file of your mod.
+
 If you want to generate an iso with your mod, just run:
 
     ./gen.sh yoummod
