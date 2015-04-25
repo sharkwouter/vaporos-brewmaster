@@ -18,6 +18,6 @@ Make sure all the repos you used to download packages can be found in the source
 
 If you want to generate an iso with your mod, just run:
 
-    ./gen.sh yoummod
+    ./gen.sh yourmod
 
 That's it, good luck!
