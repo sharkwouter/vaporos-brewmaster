@@ -52,10 +52,10 @@ upgrade ( ) {
 		# determine architecture of package
 		arch=$(echo ${package}|cut -d "_" -f3|cut -d "." -f1)
 		packagesn="/$(echo ${package}|cut -d ":" -f1)_"
-		latestpkg=$(grep ${packagesn} ${repopkglist}|grep "_${arch}\.\|_all\."|sort -t "/" -k9 -V -r|head -1)
+		latestpkg=$(grep ${packagesn} ${repopkglist}|grep "_${arch}\.\|_all\."|sort -rV -t "_" -k 2|head -1)
 		if [ ! -z "$latestpkg" ]; then
 			cd ${downloaddir}
-			wget -nc $(grep ${packagesn} ${repopkglist}|grep "_${arch}\.\|_all\."|sort -t "/" -k9 -V -r|head -1)
+			wget -nc ${latestpkg}
 			cd - > /dev/null
 		fi
 	done
@@ -65,7 +65,7 @@ download ( ) {
 	echo "downloading ${clioptions}"
 	mkdir -p ${downloaddir}
 	for package in ${clioptions}; do
-		echo -e "\n${package}"
+		echo -e "\n${package} $(echo ${clioptions}|tr "\ " "\n"|nl|grep ${package}|cut -f 1)/$(echo ${clioptions}|wc -w)"
 		
 		# determine architecture of package
 		arch=$(echo ${package}|cut -d ":" -f2)
@@ -73,21 +73,25 @@ download ( ) {
 			arch="amd64";
 		fi
 		packagesn="/$(echo ${package}|cut -d ":" -f1)_"
-		matches=$(grep ${packagesn} ${repopkglist}|grep "_${arch}\.\|_all\."|sort -t "/" -k9 -V -r)
+		matches=$(grep ${packagesn} ${repopkglist}|grep "_${arch}\.\|_all\."|sort -rV -t "_" -k 2|uniq)
 		if [[ "$?" > 0 ]];then
 			echo "${package} not found in any of the repositories in ${sources}"
 			break;
 		fi
-		echo ${matches}|tr "\ " "\n"|nl
-		echo -e "\nWhich version do you want?:"
-		while true; do
-			read choice
-			if [[ "${choice}" > 0 ]] && [[ "$choice" < "$(expr $(echo ${matches}|wc -w) + 1 )" ]]; then
-				break;
-			else
-				echo "${choice} is not a valid option"
-			fi
-		done	
+		if [ "$(echo ${matches}|wc -w)" == "1" ]; then
+			choice="1"
+		else
+			echo ${matches}|tr "\ " "\n"|nl
+			echo -e "\nWhich version do you want?:"
+			while true; do
+				read choice
+				if [[ "${choice}" > 0 ]] && [[ "$choice" < "$(expr $(echo ${matches}|wc -w) + 1 )" ]]; then
+					break;
+				else
+					echo "${choice} is not a valid option"
+				fi
+			done
+		fi	
 		cd ${downloaddir}
 		wget -nc $(echo ${matches}|tr "\ " "\n"|sed -n "${choice}p")
 		cd - > /dev/null
