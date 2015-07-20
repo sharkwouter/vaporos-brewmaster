@@ -44,6 +44,12 @@ update ( ) {
 }
 
 upgrade ( ) {
+	# check if the package list exists first
+	if [ ! -e ${repopkglist} ]; then
+		echo -e "Error: ${repopkglist} doesn't exist, run \"${0} update\" first\n"
+		usage;
+	fi
+	
 	echo "Upgrading packages"
 	mkdir -p ${downloaddir}
 	existingpkgs=$(ls packages|grep '.deb$')
@@ -62,6 +68,12 @@ upgrade ( ) {
 }
 
 download ( ) {
+	# check if the package list exists first
+	if [ ! -e ${repopkglist} ]; then
+		echo -e "Error: ${repopkglist} doesn't exist, run \"${0} update\" first\n"
+		usage;
+	fi
+
 	echo "downloading ${clioptions}"
 	mkdir -p ${downloaddir}
 	for package in ${clioptions}; do
@@ -74,13 +86,12 @@ download ( ) {
 		fi
 		packagesn="/$(echo ${package}|cut -d ":" -f1)_"
 		matches=$(grep ${packagesn} ${repopkglist}|grep "_${arch}\.\|_all\."|sort -rV -t "_" -k 2|uniq)
-		if [[ "$?" > 0 ]];then
-			echo "${package} not found in any of the repositories in ${sources}"
+		if [[ "$(echo ${matches}|wc -w)" == "0" ]];then
+			echo -e "\n${package} not found in any of the repositories in ${sources}"
 			break;
 		fi
 		if [ "$(echo ${matches}|wc -w)" == "1" ]; then
 			choice="1"
-		else
 			echo ${matches}|tr "\ " "\n"|nl
 			echo -e "\nWhich version do you want?:"
 			while true; do
