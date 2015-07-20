@@ -92,6 +92,7 @@ download ( ) {
 		fi
 		if [ "$(echo ${matches}|wc -w)" == "1" ]; then
 			choice="1"
+		else
 			echo ${matches}|tr "\ " "\n"|nl
 			echo -e "\nWhich version do you want?:"
 			while true; do
