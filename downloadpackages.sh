@@ -58,8 +58,8 @@ upgrade ( ) {
 		# determine architecture of package
 		arch=$(echo ${package}|cut -d "_" -f3|cut -d "." -f1)
 		packagesn="/$(echo ${package}|cut -d ":" -f1)_"
-		latestpkg=$(grep ${packagesn} ${repopkglist}|grep "_${arch}\.\|_all\."|sort -rV -t "_" -k 2|head -1)
-		if [ ! -z "$latestpkg" ]; then
+		latestpkg=$(grep ${packagesn} ${repopkglist}|grep "_${arch}\.\|_all\."|sed "s/_${arch}.deb$//g"|sort -rV -t "_" -k 2|sed "s/$/_${arch}.deb/g"|head -1)
+		if [ -n ${latestpkg} ]; then
 			cd ${downloaddir}
 			wget -nc ${latestpkg}
 			cd - > /dev/null
@@ -85,7 +85,7 @@ download ( ) {
 			arch="amd64";
 		fi
 		packagesn="/$(echo ${package}|cut -d ":" -f1)_"
-		matches=$(grep ${packagesn} ${repopkglist}|grep "_${arch}\.\|_all\."|sort -rV -t "_" -k 2|uniq)
+		matches=$(grep ${packagesn} ${repopkglist}|grep "_${arch}\.\|_all\."|sed "s/_${arch}.deb$//g"|sort -rV -t "_" -k 2|sed "s/$/_${arch}.deb/g"|uniq)
 		if [[ "$(echo ${matches}|wc -w)" == "0" ]];then
 			echo -e "\n${package} not found in any of the repositories in ${sources}"
 			break;
