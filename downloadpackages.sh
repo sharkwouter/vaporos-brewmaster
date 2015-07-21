@@ -64,9 +64,11 @@ upgrade ( ) {
 		arch=$(echo ${package}|cut -d "_" -f3|cut -d "." -f1)
 		packagesn="/$(echo ${package}|cut -d ":" -f1|cut -f1 -d"_")_"
 		latestpkg=$(grep ${packagesn} ${repopkglist}|grep "_${arch}\.\|_all\."|sed "s/_${arch}.deb$//g"|sort -rV -t "_" -k 2|sed "s/$/_${arch}.deb/g"|head -1)
-		if [ ${latestpkg} ] && [ "$(echo ${latestpkg}|rev|cut -f1 -d'/'|rev)" != "${package}" ]; then
+		latestpkgname="$(echo ${latestpkg}|rev|cut -f1 -d'/'|rev)"
+		if [ ${latestpkg} ] && [ "${latestpkgname}" != "${package}" ]; then
 			cd ${downloaddir}
-			wget -nc ${latestpkg}
+			echo -e "\nDownloading:\n${latestpkgname}\nWill replace:\n${package}"
+			wget -nc -q ${latestpkg}
 			cd - > /dev/null
 		fi
 	done
