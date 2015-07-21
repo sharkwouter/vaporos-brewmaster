@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+
 # set variables
 sources="sources.list"
 repopkglist="packages.txt"
@@ -51,7 +51,7 @@ upgrade ( ) {
 		usage;
 	fi
 
-	# set directory to 
+	# set directory with debs to check for updates
 	if [ ${clioptions} ]; then
 		packagedir="${clioptions}"
 	fi
