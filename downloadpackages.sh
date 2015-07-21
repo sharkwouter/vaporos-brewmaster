@@ -1,9 +1,10 @@
 #!/bin/bash
-
+set -x
 # set variables
 sources="sources.list"
 repopkglist="packages.txt"
 downloaddir="packages"
+packagedir="packages"
 
 # This function will print instructions for how to use this program
 usage ( ) {
@@ -49,17 +50,21 @@ upgrade ( ) {
 		echo -e "Error: ${repopkglist} doesn't exist, run \"${0} update\" first\n"
 		usage;
 	fi
-	
+
+	# set directory to 
+	if [ ${clioptions} ]; then
+		packagedir="${clioptions}"
+	fi
+
 	echo "Upgrading packages"
 	mkdir -p ${downloaddir}
-	existingpkgs=$(ls packages|grep '.deb$')
+	existingpkgs=$(find ${packagedir} -name *.deb|rev|cut -f1 -d"/"|rev)
 	for package in ${existingpkgs}; do
-		
 		# determine architecture of package
 		arch=$(echo ${package}|cut -d "_" -f3|cut -d "." -f1)
-		packagesn="/$(echo ${package}|cut -d ":" -f1)_"
+		packagesn="/$(echo ${package}|cut -d ":" -f1|cut -f1 -d"_")_"
 		latestpkg=$(grep ${packagesn} ${repopkglist}|grep "_${arch}\.\|_all\."|sed "s/_${arch}.deb$//g"|sort -rV -t "_" -k 2|sed "s/$/_${arch}.deb/g"|head -1)
-		if [ -n ${latestpkg} ]; then
+		if [ ${latestpkg} ] && [ "$(echo ${latestpkg}|rev|cut -f1 -d'/'|rev)" != "${package}" ]; then
 			cd ${downloaddir}
 			wget -nc ${latestpkg}
 			cd - > /dev/null
