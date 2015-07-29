@@ -60,15 +60,18 @@ upgrade ( ) {
 	mkdir -p ${downloaddir}
 	existingpkgs=$(find ${packagedir} -name *.deb|rev|cut -f1 -d"/"|rev)
 	for package in ${existingpkgs}; do
-		# determine architecture of package
-		arch=$(echo ${package}|cut -d "_" -f3|cut -d "." -f1)
-		packagesn="/$(echo ${package}|cut -d ":" -f1|cut -f1 -d"_")_"
-		latestpkg=$(grep ${packagesn} ${repopkglist}|grep "_${arch}\.\|_all\."|sed "s/_${arch}.deb$//g"|sort -rV -t "_" -k 2|sed "s/$/_${arch}.deb/g"|head -1)
-		latestpkgname="$(echo ${latestpkg}|rev|cut -f1 -d'/'|rev)"
-		if [ ${latestpkg} ] && [ "${latestpkgname}" != "${package}" ]; then
+		pkgname=$(echo ${package}|cut -f1 -d"_")
+		pkgarch=$(echo ${package}|cut -f3 -d"_")
+		pkgversion=$(echo ${package}|cut -f2 -d"_")
+
+		versions=$(grep "/${pkgname}_" ${repopkglist}|grep "_${pkgarch}"|cut -f2 -d "_")
+		newest=$(echo "${pkgversion} ${versions}"|tr "\ " "\n"|sort -rV|head -1)
+		if [ "${newest}" != "${pkgversion}" ]; then
+			pkgdownloadurl=$(grep "/${pkgname}_" ${repopkglist}|grep "_${pkgarch}"|grep "${newest}"|head -1)
 			cd ${downloaddir}
-			echo -e "\nDownloading:\n${latestpkgname}\nWill replace:\n${package}"
-			wget -nc -q ${latestpkg}
+			echo -e "\nDownloading:\n${pkgname}_${newest}_${pkgarch}\nWill replace:\n${package}"
+			echo "url: ${pkgdownloadurl}"
+			wget -nc -q ${pkgdownloadurl}
 			cd - > /dev/null
 		fi
 	done
