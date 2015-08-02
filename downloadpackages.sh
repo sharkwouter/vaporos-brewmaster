@@ -95,7 +95,7 @@ download ( ) {
 			arch="amd64";
 		fi
 		packagesn="/$(echo ${package}|cut -d ":" -f1)_"
-		matches=$(grep ${packagesn} ${repopkglist}|grep "_${arch}\.\|_all\."|sed "s/_${arch}.deb$//g"|sort -rV -t "_" -k 2|sed "s/$/_${arch}.deb/g"|uniq)
+		matches=$(grep ${packagesn} ${repopkglist}|grep "_${arch}\.\|_all\."|sort|uniq)
 		if [[ "$(echo ${matches}|wc -w)" == "0" ]];then
 			echo -e "\n${package} not found in any of the repositories in ${sources}"
 			break;
