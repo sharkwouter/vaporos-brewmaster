@@ -3,7 +3,6 @@
 # set variables
 sources="sources.list"
 repopkglist="packages.txt"
-downloaddir="packages"
 packagedir="packages"
 
 # This function will print instructions for how to use this program
@@ -12,11 +11,11 @@ usage ( ) {
         echo "       $0 upgrade"
         echo "       $0 download pkg1 [pkg2 ...]"
 	echo ""
-	echo "$0 is a script designed for downloading and upgrading packages used in your Stephenson's Rocket mod. It uses the ${sources} file to when updating the list of packages found in${repopkglist} and downloads packages to ${downloaddir}."
+	echo "$0 is a script designed for downloading and upgrading packages used in your Stephenson's Rocket mod. It uses the ${sources} file to when updating the list of packages found in${repopkglist} and downloads packages to ${packagedir}."
 	echo ""
 	echo "Commands:"
 	echo "  update - Create ${repopkglist} with all packages found in the repos in ${sources}"
-	echo "  upgrade - Download the latest version of all packages found in packages to ${downloaddir}"
+	echo "  upgrade - Download the latest version of all packages found in packages to ${packagedir}"
 	echo "  download - Download new packages" 
 	exit 1
 }
@@ -57,7 +56,7 @@ upgrade ( ) {
 	fi
 
 	echo "Upgrading packages"
-	mkdir -p ${downloaddir}
+	mkdir -p ${packagedir}
 	existingpkgs=$(find ${packagedir} -name *.deb|rev|cut -f1 -d"/"|rev)
 	for package in ${existingpkgs}; do
 		pkgname=$(echo ${package}|cut -f1 -d"_")
@@ -68,7 +67,9 @@ upgrade ( ) {
 		newest=$(echo "${pkgversion} ${versions}"|tr "\ " "\n"|sort -rV|head -1)
 		if [ "${newest}" != "${pkgversion}" ]; then
 			pkgdownloadurl=$(grep "/${pkgname}_" ${repopkglist}|grep "_${pkgarch}"|grep "${newest}"|head -1)
-			cd ${downloaddir}
+			downloaddir=$(echo ${pkgdownloadurl}|rev|cut -d"/" -f2-4|rev)
+			mkdir -p ${packagedir}/${downloaddir}
+			cd ${packagedir}/${downloaddir}
 			echo -e "\nDownloading:\n${pkgname}_${newest}_${pkgarch}\nWill replace:\n${package}"
 			echo "url: ${pkgdownloadurl}"
 			wget -nc -q ${pkgdownloadurl}
@@ -85,7 +86,7 @@ download ( ) {
 	fi
 
 	echo "downloading ${clioptions}"
-	mkdir -p ${downloaddir}
+	mkdir -p ${packagedir}
 	for package in ${clioptions}; do
 		echo -e "\n${package} $(echo ${clioptions}|tr "\ " "\n"|nl|grep ${package}|cut -f 1)/$(echo ${clioptions}|wc -w)"
 		
@@ -113,9 +114,12 @@ download ( ) {
 					echo "${choice} is not a valid option"
 				fi
 			done
-		fi	
-		cd ${downloaddir}
-		wget -nc $(echo ${matches}|tr "\ " "\n"|sed -n "${choice}p")
+		fi
+		downloadurl=$(echo ${matches}|tr "\ " "\n"|sed -n "${choice}p")
+		downloaddir=$(echo ${downloadurl}|rev|cut -d"/" -f2-4|rev)
+		mkdir -p ${packagedir}/${downloaddir}
+		cd ${packagedir}/${downloaddir}
+		wget -nc ${downloadurl}
 		cd - > /dev/null
 	done
 }
