@@ -3,7 +3,7 @@
 # set variables
 sources="sources.list"
 repopkglist="packages.txt"
-packagedir="packages"
+packagedir="pool"
 
 # This function will print instructions for how to use this program
 usage ( ) {
@@ -35,7 +35,9 @@ update ( ) {
 			for area in ${repoareas}; do
 				for arch in i386 amd64 all; do
 					url="${repourl}/dists/${reponame}/${area}/binary-${arch}/Packages.gz"
-					curl -sSL ${url} | gunzip -cq | grep '^Filename:'|cut -d " " -f 2- | sed "s#^#${repourl}/#g" >> ${repopkglist}
+					wget ${url} 
+					gunzip -cq Packages.gz| grep '^Filename:'|cut -d " " -f 2- | sed "s#^#${repourl}/#g" >> ${repopkglist}
+					rm Packages.gz
                         	done
                		done
         	fi
@@ -52,12 +54,14 @@ upgrade ( ) {
 
 	# set directory with debs to check for updates
 	if [ ${clioptions} ]; then
-		packagedir="${clioptions}"
+		upgradedir="${clioptions}"
+	else
+		upgradedir="${packagedir}"
 	fi
 
 	echo "Upgrading packages"
 	mkdir -p ${packagedir}
-	existingpkgs=$(find ${packagedir} -name *.deb|rev|cut -f1 -d"/"|rev)
+	existingpkgs=$(find ${upgradedir} -name *.deb|rev|cut -f1 -d"/"|rev)
 	for package in ${existingpkgs}; do
 		pkgname=$(echo ${package}|cut -f1 -d"_")
 		pkgarch=$(echo ${package}|cut -f3 -d"_")
