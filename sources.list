@@ -1,24 +1,21 @@
 # This is the sources.list file will be used to determine where packages go, make sure that all repos used to get the deb packages for your mod are in here.
 
 # SteamOS repos
-deb http://repo.steampowered.com/steamos alchemist main contrib non-free
-deb http://repo.steampowered.com/steamos alchemist_beta main contrib non-free
+deb http://repo.steampowered.com/steamos brewmaster main contrib non-free
+deb http://repo.steampowered.com/steamos brewmaster_beta main contrib non-free
 
 # Debian repo
-deb ftp://mirror.nl.leaseweb.net/debian wheezy main contrib non-free
+deb ftp://mirror.nl.leaseweb.net/debian jessie main contrib non-free
 
 # Debian security
-#deb http://security.debian.org/ wheezy/updates main contrib non-free
+#deb http://security.debian.org/ jessie/updates main contrib non-free
 
 # Debian backports repo
-deb ftp://mirror.nl.leaseweb.net/debian wheezy-backports main contrib non-free
+deb ftp://mirror.nl.leaseweb.net/debian jessie-backports main contrib non-free
 
 # Debian-installer from SteamOS repo
-deb http://repo.steampowered.com/steamos alchemist main/debian-installer
-deb http://repo.steampowered.com/steamos alchemist_beta main/debian-installer
+deb http://repo.steampowered.com/steamos brewmaster main/debian-installer
+deb http://repo.steampowered.com/steamos brewmaster_beta main/debian-installer
 
 # Debian-installer from Debian repo
-deb ftp://mirror.nl.leaseweb.net/debian wheezy main/debian-installer
-
-# XBMC/Kodi repo
-deb http://mirrors.xbmc.org/apt/steamos alchemist main
+deb ftp://mirror.nl.leaseweb.net/debian jessie main/debian-installer
