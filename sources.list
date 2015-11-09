@@ -11,7 +11,7 @@ deb ftp://mirror.nl.leaseweb.net/debian jessie main contrib non-free
 #deb http://security.debian.org/ jessie/updates main contrib non-free
 
 # Debian backports repo
-#deb ftp://mirror.nl.leaseweb.net/debian jessie-backports main contrib non-free
+deb ftp://mirror.nl.leaseweb.net/debian jessie-backports main contrib non-free
 
 # Debian-installer from SteamOS repo
 #deb http://repo.steampowered.com/steamos brewmaster main/debian-installer
