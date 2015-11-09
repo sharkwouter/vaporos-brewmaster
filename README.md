@@ -27,7 +27,7 @@ For a more detailed list of added package, take a look at the file changes.txt.
 
 # How to install?
 
-ISO's for the latest releases are always available on http://trashcan-gaming.nl/
+ISO's for the latest releases are always available on http://download.vaporos.net/
 
 Otherwise you could build it yourself.
 
