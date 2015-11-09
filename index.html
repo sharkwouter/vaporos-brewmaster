@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Vaporos Brewmaster : Brewmaster release of VaporOS">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Vaporos Brewmaster</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/sharkwouter/vaporos-brewmaster">View on GitHub</a>
+
+          <h1 id="project_title">Vaporos Brewmaster</h1>
+          <h2 id="project_tagline">Brewmaster release of VaporOS</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/sharkwouter/vaporos-brewmaster/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/sharkwouter/vaporos-brewmaster/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="vaporos-brewmaster" class="anchor" href="#vaporos-brewmaster" aria-hidden="true"><span class="octicon octicon-link"></span></a>VaporOS Brewmaster</h1>
+
+<p>VaporOS - a version of the Stephenson's Rocket SteamOS installer with multiple added packages.</p>
+
+<h1>
+<a id="improvements" class="anchor" href="#improvements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Improvements</h1>
+
+<p>VaporOS adds the following packages to Stephenson's rocket:</p>
+
+<p>BPM</p>
+
+<ul>
+<li>Kodi, a media player which offers a great experience on a TV with a controller (you can add it as a library shortcut from the setting)</li>
+</ul>
+
+<p>Desktop</p>
+
+<ul>
+<li>VLC, a media player</li>
+<li>Gedit, a text editor</li>
+<li>File Roller, an archiving tool</li>
+<li>Gnome Tweak Tool, which allows you to configure the desktop in many additional ways</li>
+</ul>
+
+<p>Command line</p>
+
+<ul>
+<li>bash-completion, for making it easier to use the commandline</li>
+</ul>
+
+<p>For a more detailed list of added package, take a look at the file changes.txt.</p>
+
+<h1>
+<a id="planned-improvements" class="anchor" href="#planned-improvements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Planned improvements</h1>
+
+<ul>
+<li>Bringing back the controller binds from old versions of VaporOS.</li>
+<li>Automatic updates for packages specific to VaporOS. Currently security updates for the additional packages will have to be installed manually from the Debian repositories!</li>
+</ul>
+
+<h1>
+<a id="how-to-install" class="anchor" href="#how-to-install" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to install?</h1>
+
+<p>ISO's for the latest releases are always available on <a href="http://trashcan-gaming.nl/">http://trashcan-gaming.nl/</a></p>
+
+<p>Otherwise you could build it yourself.</p>
+
+<h2>
+<a id="installing-from-a-dvd" class="anchor" href="#installing-from-a-dvd" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing from a DVD</h2>
+
+<p>Just burn the ISO to a blank DVD from your favourite tool, and boot it.</p>
+
+<h2>
+<a id="installing-from-usb-mac" class="anchor" href="#installing-from-usb-mac" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing from USB (Mac)</h2>
+
+<p>Open a Terminal window from the Utilities section of Applications.</p>
+
+<p>Type <code>diskutil list</code> to get a list of devices - one of them will be your USB stick (e.g. <code>/dev/disk2</code>). Follow the Linux instructions below, with this <code>/dev/rdiskX</code> entry instead of <code>/dev/sdX</code></p>
+
+<h2>
+<a id="installing-from-usb-linux" class="anchor" href="#installing-from-usb-linux" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing from USB (Linux)</h2>
+
+<p>Plug in the USB stick and run <code>dmesg</code>; look for a line similar to this:</p>
+
+<pre><code>[377039.485179] sd 7:0:0:0: [sdc] Attached SCSI removable disk
+</code></pre>
+
+<p>In this case, <code>sdc</code> is the device name for the USB stick you just inserted. Now we put the installer on the stick, as root (e.g. use <code>sudo</code>) run </p>
+
+<pre><code>dd bs=1M if=/path/to/vaporosX.iso of=/dev/sdX 
+</code></pre>
+
+<p>sdX should be the USB stick device from the information you received from <code>dmesg</code>. Be sure to use sdX, not sdX1 or sdX2. Then boot into the stick.</p>
+
+<h2>
+<a id="installing-from-usb-windows" class="anchor" href="#installing-from-usb-windows" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing from USB (Windows)</h2>
+
+<p>Download <a href="http://sourceforge.net/projects/win32diskimager/">Win32 Disk Imager</a> and use it to copy the .iso to your USB stick (1GB minimum size).</p>
+
+<h2>
+<a id="once-the-installer-is-up" class="anchor" href="#once-the-installer-is-up" aria-hidden="true"><span class="octicon octicon-link"></span></a>Once the installer is up...</h2>
+
+<p>Pick the "Automatic Install" option to wipe the first hard disk in your system and install SteamOS to it.</p>
+
+<p>For more sophisticated booting - e.g. dual-boot or custom partition sizes - select the "Expert" option. Use of this mode is documented in the support video <a href="https://www.youtube.com/watch?v=3MjkfMs-4T4">here</a>.</p>
+
+<p>Beyond that, just follow Valve's instructions from <a href="http://store.steampowered.com/steamos/buildyourown">their site</a> - Stephenson's Rocket should behave exactly like the real SteamOS, except it works on more systems</p>
+
+<h1>
+<a id="how-to-build-an-iso" class="anchor" href="#how-to-build-an-iso" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to build an iso?</h1>
+
+<p>To build the iso you'll need to use a Debian based distribution like Ubuntu, Mint or Debian itself.</p>
+
+<p>Since VaporOS is based on Stephenson's Rocket, you'll have to clone that repo before building the iso. You can do that with the following command:</p>
+
+<pre><code>git clone --depth=1 https://github.com/steamos-community/stephensons-rocket.git
+</code></pre>
+
+<p>After you've done that move into the newly created repo and clone this repo like this:</p>
+
+<pre><code>cd stephensons-rocket
+git clone --depth=1 https://github.com/sharkwouter/vaporos-brewmaster.git
+</code></pre>
+
+<p>Now you can build the iso with:</p>
+
+<pre><code>./gen.sh -n "VaporOS Brewmaster" vaporos-brewmaster
+</code></pre>
+
+<p>You will be missing some dependencies, but the script should tell you how to get them. The resulting iso will be called vaporos-brewmaster.iso.</p>
+
+<h1>
+<a id="known-issues-and-workarounds" class="anchor" href="#known-issues-and-workarounds" aria-hidden="true"><span class="octicon octicon-link"></span></a>Known issues and workarounds</h1>
+
+<ul>
+<li>Running in Virtualbox is not supported.</li>
+</ul>
+
+<h1>
+<a id="special-thanks" class="anchor" href="#special-thanks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Special Thanks</h1>
+
+<ul>
+<li>All contributors to Stephenson's Rocket, Directhex in particular.</li>
+<li>[40-1]PvtBalderick, for help with ideas and testing.</li>
+<li>ProfessorKaos64, for help with ideas and testing.</li>
+<li>Dubigrasu, for help with development, testing and ideas.</li>
+<li>Nate Wardawg, for the name.</li>
+<li>Jorgën Såagrid, for allowing the continued use of the name VaporOS.</li>
+<li>Valve for creating SteamOS in the first place.</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Vaporos Brewmaster maintained by <a href="https://github.com/sharkwouter">sharkwouter</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
