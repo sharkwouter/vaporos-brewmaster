@@ -18,8 +18,6 @@ Desktop
 Command line
 - bash-completion, for making it easier to use the commandline
 
-For a more detailed list of added package, take a look at the file changes.txt.
-
 # Planned improvements
 
 - Bringing back the controller binds from old versions of VaporOS.
