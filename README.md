@@ -8,7 +8,6 @@ VaporOS adds the following packages to Stephenson's rocket:
 
 BPM
 - Kodi, a media player which offers a great experience on a TV with a controller (you can add it as a library shortcut from the setting)
-- VaporOS binds Xbox 360, offers controller binds on Xbox 360 controllers for making screenshots(LS+RS), recording(LB+RB+A to start/stop recording), displaying fps(LB+RB+X) and restarting Steam(LB+RB+Home). This might work for other controllers as well, but that will need more testing. Recordings will be saved to the Videos directory in home directory of the steam user, screenshots are saved to Pictures.
 
 Desktop
 - VLC, a media player
@@ -18,9 +17,6 @@ Desktop
 
 Command line
 - bash-completion, for making it easier to use the commandline
-- libav, a commandline based screen recording tool
-
-- VaporOS offers controller binds on Xbox 360 controllers for making screenshots(LS+RS), recording(LB+RB+A to start/stop recording), displaying fps(LB+RB+X) and restarting Steam(LB+RB+Home).
 
 For a more detailed list of added package, take a look at the file changes.txt.
 
