@@ -22,6 +22,7 @@ For a more detailed list of added package, take a look at the file changes.txt.
 
 # Planned improvements
 
+- Bringing back the controller binds from old versions of VaporOS.
 - Automatic updates for packages specific to VaporOS. Currently security updates for the additional packages will have to be installed manually from the Debian repositories!
 
 # How to install?
