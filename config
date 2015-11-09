@@ -1,2 +1,2 @@
-install=
+install= bash-completion gedit file-roller vlc libav-tools gnome-tweak-tool
 remove=
