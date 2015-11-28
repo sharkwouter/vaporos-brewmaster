@@ -1,2 +1,2 @@
-install= bash-completion gedit file-roller vlc gnome-tweak-tool kodi gksu
+install= bash-completion gedit file-roller vlc gnome-tweak-tool kodi gksu lgogdownloader
 remove=
