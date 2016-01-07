@@ -7,22 +7,28 @@ packagedir="pool"
 
 # This function will print instructions for how to use this program
 usage ( ) {
-        echo "Usage: $0 update"
-        echo "       $0 upgrade"
+        echo "Usage: $0 update [repolist file]"
+        echo "       $0 upgrade [location of old packages]"
         echo "       $0 download pkg1 [pkg2 ...]"
 	echo ""
 	echo "$0 is a script designed for downloading and upgrading packages used in your Stephenson's Rocket mod. It uses the ${sources} file to when updating the list of packages found in${repopkglist} and downloads packages to ${packagedir}."
 	echo ""
 	echo "Commands:"
-	echo "  update - Create ${repopkglist} with all packages found in the repos in ${sources}"
-	echo "  upgrade - Download the latest version of all packages found in packages to ${packagedir}"
+	echo "  update - Create ${repopkglist} with all packages found in the repos in ${sources}. Run this first to ensure the latest versions of packages are downloaded."
+	echo "  upgrade - Download the latest version of all packages found in packages to ${packagedir}. Might still have some bugs, so carefully read what it is doing. Does not delete the old versions."
 	echo "  download - Download new packages" 
 	exit 1
 }
 
+# This function creates a list with all available packages in the repos listed in the $sources file or the user specified file
 update ( ) {
 	# create an empty file which we will later use to list all packages
 	> ${repopkglist}
+
+	# allow users to change sources.list file
+	if [ ${clioptions} ]; then
+		sources="${clioptions}"
+	fi
 
 	echo "Updating list of packages found in the repositories listed in the ${sources} file"
 	while read repo; do
@@ -45,6 +51,7 @@ update ( ) {
 	echo "$(grep -c 'pool' ${repopkglist}) packages found"
 }
 
+# This function tries to download the latest version of packages found in $packagedir or the user specified directory
 upgrade ( ) {
 	# check if the package list exists first
 	if [ ! -e ${repopkglist} ]; then
@@ -82,6 +89,7 @@ upgrade ( ) {
 	done
 }
 
+# Downloads the packages the user specified, if available
 download ( ) {
 	# check if the package list exists first
 	if [ ! -e ${repopkglist} ]; then
