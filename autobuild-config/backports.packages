@@ -1,0 +1,14 @@
+libcec3v4
+libcec-platform1
+libswscale-ffmpeg3
+libavfilter-ffmpeg5
+libavformat-ffmpeg56
+libavutil-ffmpeg54
+libswresample-ffmpeg1
+libavcodec-ffmpeg56
+libpostproc-ffmpeg53
+libavresample-ffmpeg2
+kodi-bin
+kodi
+kodi-data
+libx265-59
