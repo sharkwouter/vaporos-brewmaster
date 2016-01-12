@@ -20,6 +20,8 @@ Command line
 
 # Planned improvements
 
+- Add [Ice]() for installation of roms.
+- Bring back TRIM support for SSDs.
 - Bringing back the controller binds from old versions of VaporOS.
 - Automatic updates for packages specific to VaporOS. Currently security updates for the additional packages will have to be installed manually from the Debian repositories!
 
