@@ -52,3 +52,5 @@ libmad0
 xdg-utils
 libzvbi0
 libzvbi-common
+libao-common
+libao4

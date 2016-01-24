@@ -7,7 +7,7 @@ if [ -d pool ]; then
 fi
 
 # redownload all packages
-for i in steamos debian backports; do
+for i in steamos debian backports steamos-tools; do
 	./downloadpackages.sh update autobuild-config/$i.repo
 	./downloadpackages.sh download `cat autobuild-config/$i.packages|tr "\n" "\ "`
 done
