@@ -6,6 +6,7 @@ libavformat-ffmpeg56
 libavutil-ffmpeg54
 libswresample-ffmpeg1
 libavcodec-ffmpeg56
+libavcodec-ffmpeg-extra56
 libpostproc-ffmpeg53
 libavresample-ffmpeg2
 kodi-bin
