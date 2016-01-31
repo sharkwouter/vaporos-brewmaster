@@ -17,8 +17,8 @@ Desktop
 - Gnome Tweak Tool, which allows you to configure the desktop in many additional ways
 
 Command line
-- bash-completion, for making it easier to use the commandline
-- lgogdownloader, a command line tool for downloading GOG games
+- Bash-completion, for making it easier to use the commandline
+- Lgogdownloader, a command line tool for downloading GOG games
 - Ice-steamos, a tool for adding roms to your Steam Library
 
 General additions
