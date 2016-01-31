@@ -8,6 +8,7 @@ VaporOS adds the following packages to Stephenson's rocket:
 
 BPM
 - Kodi, a media player which offers a great experience on a TV with a controller (you can add it as a library shortcut from the setting)
+- RetroArch, an emulator front-end with many emulators included in it
 
 Desktop
 - VLC, a media player
@@ -17,13 +18,17 @@ Desktop
 
 Command line
 - bash-completion, for making it easier to use the commandline
+- lgogdownloader, a command line tool for downloading GOG games
+- Ice-steamos, a tool for adding roms to your Steam Library
+
+General additions
+- TRIM support for SSDs
 
 # Planned improvements
 
-- Add [Ice]() for installation of roms.
-- Bring back TRIM support for SSDs.
 - Bringing back the controller binds from old versions of VaporOS.
 - Automatic updates for packages specific to VaporOS. Currently security updates for the additional packages will have to be installed manually from the Debian repositories!
+- Init script for Ice-steamos, so it will automatically add your roms to your Steam library on boot.
 
 # How to install?
 
