@@ -54,3 +54,4 @@ libzvbi0
 libzvbi-common
 libao-common
 libao4
+python-pkg-resources
