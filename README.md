@@ -20,14 +20,19 @@ Desktop
 Command line
 - Bash-completion, for making it easier to use the commandline
 - Lgogdownloader, a command line tool for downloading GOG games
-- Ice-steamos, a tool for adding roms to your Steam Library
+- Ice-steamos, a tool for adding roms to your Steam Library. Instructions on how to use this tool can be found [here](https://github.com/ProfessorKaos64/Ice#running-ice)
+- Lbav, a tool for recording and converting video and audio
+
+General Improvements
+- TRIM support for SSD users
+- Mouse acceleration is disabled by default
 
 # Planned improvements
 
-- Adding TRIM support for SSD users
-- Disabling mouse acceleration by default
 - Automatic updates for packages specific to VaporOS. Currently security updates for the additional packages will have to be installed manually from the Debian repositories!
-- Init script for Ice-steamos, so it will automatically add your roms to your Steam library on boot.
+- Adding support for more controllers to vaporos-binds-xbox360
+- Making Ice-steamos easier to use
+- Making building Stephenson's Rocket and VaporOS ISOs possible on more operating systems(think Arch, Fedora, etc)
 
 # How to install?
 
@@ -83,7 +88,7 @@ After you've done that move into the newly created repo and clone this repo like
     
 Now you can build the iso with:
 
-    ./gen.sh -n "VaporOS Brewmaster" vaporos-brewmaster
+    ./gen.sh -n "VaporOS" vaporos-brewmaster
     
 You will be missing some dependencies, but the script should tell you how to get them. The resulting iso will be called vaporos-brewmaster.iso.
 
@@ -97,6 +102,7 @@ You will be missing some dependencies, but the script should tell you how to get
 - [40-1]PvtBalderick, for help with ideas and testing.
 - ProfessorKaos64, for help with ideas and testing.
 - Dubigrasu, for help with development, testing and ideas.
+- Ryochan7, for some ideas and getting controlling bindings working in SteamOS Brewmaster
 - Nate Wardawg, for the name.
 - Jorgën Såagrid, for allowing the continued use of the name VaporOS.
 - Valve for creating SteamOS in the first place.
