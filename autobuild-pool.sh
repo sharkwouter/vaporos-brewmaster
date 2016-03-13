@@ -15,4 +15,8 @@ done
 # sync vaporos packages
 rsync -av vaporos-packages/ pool
 
+# move packages from games to main
+rsync -av pool/games/ pool/main
+rm -rf pool/games
+
 # done
