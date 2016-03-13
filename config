@@ -1,2 +1,2 @@
-install=bash-completion gedit file-roller vlc gnome-tweak-tool kodi gksu lgogdownloader ice-steamos libav-tools vaporos-binds-xbox360 vaporos-mousefix
+install=bash-completion gedit file-roller vlc gnome-tweak-tool kodi gksu lgogdownloader ice-steamos libav-tools vaporos-binds-xbox360 vaporos-mousefix vaporos-trim-support2
 remove=
