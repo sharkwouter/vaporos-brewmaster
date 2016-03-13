@@ -9,8 +9,8 @@ Build-Depends: debhelper (>= 9)
 Package-List:
  vaporos-trim-support2 deb utils optional arch=all
 Checksums-Sha1:
- 182fccba540eb2ff334d2be56687cc7d1197a340 3197 vaporos-trim-support2_2.0.tar.gz
+ d824d39079f989159360a09faf23532aac830a43 3198 vaporos-trim-support2_2.0.tar.gz
 Checksums-Sha256:
- 942cb75db2f13852d93a71c78bfed21a54b4a6cdb377c213a8144ac744a32fa1 3197 vaporos-trim-support2_2.0.tar.gz
+ db9cac3d7f9fcfb1ce7a50abe56c4adbe10096e961324b6edb16c328577fe453 3198 vaporos-trim-support2_2.0.tar.gz
 Files:
- d058f402bb7eb83329e038664df127c4 3197 vaporos-trim-support2_2.0.tar.gz
+ 054353ca4b80adf24b3d8f6fb01f7336 3198 vaporos-trim-support2_2.0.tar.gz
