@@ -1,2 +1,2 @@
-install=bash-completion gedit file-roller vlc gnome-tweak-tool kodi gksu lgogdownloader vaporos-trim-support2 anacron ice-steamos
+install=bash-completion gedit file-roller vlc gnome-tweak-tool kodi gksu lgogdownloader ice-steamos
 remove=
