@@ -1,0 +1,28 @@
+Format: 1.8
+Date: Sun, 13 Mar 2016 16:42:48 +0100
+Source: vaporos-binds-xbox360
+Binary: vaporos-binds-xbox360
+Architecture: source all
+Version: 2.1
+Distribution: brewmaster
+Urgency: low
+Maintainer: Wouter Wijsman <wwijsman@live.nl>
+Changed-By: Wouter Wijsman <wwijsman@live.nl>
+Description:
+ vaporos-binds-xbox360 - Binds scripts to Xbox 360 controller button combinations
+Changes:
+ vaporos-binds-xbox360 (2.1) brewmaster; urgency=low
+ .
+   * Updated to use systemd
+Checksums-Sha1:
+ 74aaedca86c405273851c8c7a8d8411cd4d40f33 568 vaporos-binds-xbox360_2.1.dsc
+ 79926f4dfe48cc83722f0ec339ef39c8b6493e05 2978 vaporos-binds-xbox360_2.1.tar.gz
+ 15067a67036b12f8bcdd28480deb8a42475af543 3788 vaporos-binds-xbox360_2.1_all.deb
+Checksums-Sha256:
+ b015f65280985ab4160a240f3b2374e1df4938021bbc139e5eeb3a1a054e2bfb 568 vaporos-binds-xbox360_2.1.dsc
+ bbd2121ba63620d39683e6fe0b56d7b318f5265c1645ef382d627e648dba91a4 2978 vaporos-binds-xbox360_2.1.tar.gz
+ 2b96d00e29d2438ad19874dedc4f506154c55700834d64f718c8130d64eb9443 3788 vaporos-binds-xbox360_2.1_all.deb
+Files:
+ 160857c3ae58c5a16fd63b0cbd93584c 568 extra optional vaporos-binds-xbox360_2.1.dsc
+ 896f90d7eea0b8e6660e336566b979f5 2978 extra optional vaporos-binds-xbox360_2.1.tar.gz
+ 05a2b14b8352071872401a6d3a354bb6 3788 extra optional vaporos-binds-xbox360_2.1_all.deb
