@@ -2,15 +2,15 @@ Format: 1.0
 Source: vaporos-binds-xbox360
 Binary: vaporos-binds-xbox360
 Architecture: all
-Version: 2.1
+Version: 2.2
 Maintainer: Wouter Wijsman <wwijsman@live.nl>
 Standards-Version: 3.9.5
 Build-Depends: debhelper (>= 9)
 Package-List:
  vaporos-binds-xbox360 deb extra optional arch=all
 Checksums-Sha1:
- 79926f4dfe48cc83722f0ec339ef39c8b6493e05 2978 vaporos-binds-xbox360_2.1.tar.gz
+ e3ffe35ea701b955b71d3928d84a22978034ada3 3112 vaporos-binds-xbox360_2.2.tar.gz
 Checksums-Sha256:
- bbd2121ba63620d39683e6fe0b56d7b318f5265c1645ef382d627e648dba91a4 2978 vaporos-binds-xbox360_2.1.tar.gz
+ 662f19d7503db764a72f1718f331f9a26ace51496a99657a9f5a84b6f100118f 3112 vaporos-binds-xbox360_2.2.tar.gz
 Files:
- 896f90d7eea0b8e6660e336566b979f5 2978 vaporos-binds-xbox360_2.1.tar.gz
+ 8d933e5515cf747559a3e229083a89d4 3112 vaporos-binds-xbox360_2.2.tar.gz
